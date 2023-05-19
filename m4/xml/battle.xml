@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<BATTLE>
+ <ROW>
+    <battle_id>13</battle_id>
+    <player_id>13</player_id>
+    <char_id>2</char_id>
+    <char_race>Eldar</char_race>
+    <char_weap_id>7</char_weap_id>
+    <char_weap_army>Dark Reapers</char_weap_army>
+    <rival_race>Human</rival_race>
+    <rival_weap_army>Dark Angels</rival_weap_army>
+    <enemy_casualties>0</enemy_casualties>
+    <allied_casualties>13</allied_casualties>
+    <battle_points>34</battle_points>
+ </ROW>
+ <ROW>
+    <battle_id>19</battle_id>
+    <player_id>19</player_id>
+    <char_id>1</char_id>
+    <char_race>Human</char_race>
+    <char_weap_id>2</char_weap_id>
+    <char_weap_army>Blood Angels</char_weap_army>
+    <rival_race>Eldar</rival_race>
+    <rival_weap_army>Fire Dragons</rival_weap_army>
+    <enemy_casualties>0</enemy_casualties>
+    <allied_casualties>44</allied_casualties>
+    <battle_points>34</battle_points>
+ </ROW>
+ <ROW>
+    <battle_id>22</battle_id>
+    <player_id>22</player_id>
+    <char_id>1</char_id>
+    <char_race>Human</char_race>
+    <char_weap_id>2</char_weap_id>
+    <char_weap_army>Blood Angels</char_weap_army>
+    <rival_race>Eldar</rival_race>
+    <rival_weap_army>Fire Dragons</rival_weap_army>
+    <enemy_casualties>0</enemy_casualties>
+    <allied_casualties>32</allied_casualties>
+    <battle_points>34</battle_points>
+ </ROW>
+ <ROW>
+    <battle_id>3</battle_id>
+    <player_id>3</player_id>
+    <char_id>1</char_id>
+    <char_race>Human</char_race>
+    <char_weap_id>2</char_weap_id>
+    <char_weap_army>Blood Angels</char_weap_army>
+    <rival_race>Ork</rival_race>
+    <rival_weap_army>Deathskulls</rival_weap_army>
+    <enemy_casualties>0</enemy_casualties>
+    <allied_casualties>38</allied_casualties>
+    <battle_points>33</battle_points>
+ </ROW>
+ <ROW>
+    <battle_id>8</battle_id>
+    <player_id>8</player_id>
+    <char_id>2</char_id>
+    <char_race>Eldar</char_race>
+    <char_weap_id>7</char_weap_id>
+    <char_weap_army>Dark Reapers</char_weap_army>
+    <rival_race>Ork</rival_race>
+    <rival_weap_army>Deathskulls</rival_weap_army>
+    <enemy_casualties>0</enemy_casualties>
+    <allied_casualties>16</allied_casualties>
+    <battle_points>33</battle_points>
+ </ROW>
+ <ROW>
+    <battle_id>15</battle_id>
+    <player_id>15</player_id>
+    <char_id>2</char_id>
+    <char_race>Eldar</char_race>
+    <char_weap_id>7</char_weap_id>
+    <char_weap_army>Dark Reapers</char_weap_army>
+    <rival_race>Ork</rival_race>
+    <rival_weap_army>Deathskulls</rival_weap_army>
+    <enemy_casualties>0</enemy_casualties>
+    <allied_casualties>34</allied_casualties>
+    <battle_points>33</battle_points>
+ </ROW>
+ <ROW>
+    <battle_id>16</battle_id>
+    <player_id>16</player_id>
+    <char_id>1</char_id>
+    <char_race>Human</char_race>
+    <char_weap_id>2</char_weap_id>
+    <char_weap_army>Blood Angels</char_weap_army>
+    <rival_race>Ork</rival_race>
+    <rival_weap_army>Deathskulls</rival_weap_army>
+    <enemy_casualties>0</enemy_casualties>
+    <allied_casualties>44</allied_casualties>
+    <battle_points>33</battle_points>
+ </ROW>
+ <ROW>
+    <battle_id>17</battle_id>
+    <player_id>17</player_id>
+    <char_id>1</char_id>
+    <char_race>Human</char_race>
+    <char_weap_id>2</char_weap_id>
+    <char_weap_army>Blood Angels</char_weap_army>
+    <rival_race>Ork</rival_race>
+    <rival_weap_army>Deathskulls</rival_weap_army>
+    <enemy_casualties>0</enemy_casualties>
+    <allied_casualties>26</allied_casualties>
+    <battle_points>33</battle_points>
+ </ROW>
+ <ROW>
+    <battle_id>18</battle_id>
+    <player_id>18</player_id>
+    <char_id>1</char_id>
+    <char_race>Human</char_race>
+    <char_weap_id>2</char_weap_id>
+    <char_weap_army>Blood Angels</char_weap_army>
+    <rival_race>Ork</rival_race>
+    <rival_weap_army>Deathskulls</rival_weap_army>
+    <enemy_casualties>0</enemy_casualties>
+    <allied_casualties>38</allied_casualties>
+    <battle_points>33</battle_points>
+ </ROW>
+ <ROW>
+    <battle_id>9</battle_id>
+    <player_id>9</player_id>
+    <char_id>2</char_id>
+    <char_race>Eldar</char_race>
+    <char_weap_id>7</char_weap_id>
+    <char_weap_army>Dark Reapers</char_weap_army>
+    <rival_race>Human</rival_race>
+    <rival_weap_army>Blood Angels</rival_weap_army>
+    <enemy_casualties>0</enemy_casualties>
+    <allied_casualties>5</allied_casualties>
+    <battle_points>32</battle_points>
+ </ROW>
+</BATTLE>
