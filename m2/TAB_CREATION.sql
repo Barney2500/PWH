@@ -1,9 +1,12 @@
+DROP TABLE IF EXISTS proyecto2;
+create database proyecto2;
 create table weapons(
 	weapon_id int primary key,
     weapon_image_path varchar(200),
     weapon_name varchar(50),
     weapon_speed int,
-    weapon_strength int
+    weapon_strength int,
+    points int
 );
 create table characters(
 	char_id int primary key,
@@ -14,7 +17,9 @@ create table characters(
     char_spd int,
     char_ag int,
     char_def int,
-    char_race enum('Human','Ork','Eldar')
+    char_race enum('Human','Ork','Eldar'),
+    max_hp int,
+    points int
 );
 create table players(
 	player_id int primary key auto_increment,
