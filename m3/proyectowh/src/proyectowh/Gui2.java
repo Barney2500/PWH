@@ -20,15 +20,17 @@ public class Gui2 {
     private Player J1, Cpu;
     private CharArray ca = new CharArray();
     private JTextArea console;
-
+    //starts the gui
     public Gui2(Player J1) {
         this.J1 = J1;
         Toolkit ms = Toolkit.getDefaultToolkit();
         Dimension ss = ms.getScreenSize();
         int h = ss.height;
         int w = ss.width;
-
         frame = new JFrame("The Final Showdown: Battle of the Last Ones");
+		Image icon = ms.getImage("src/proyectowh/images/Logo.jpg");
+		frame.setIconImage(icon);
+		frame.setResizable(false);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize((w * 2) / 3, (h * 2) / 3);
         frame.setLocationRelativeTo(null);
@@ -41,8 +43,8 @@ public class Gui2 {
         panel = new JPanel();
         panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
         StartB = new JButton("Start");
-        SelChar = new JButton("Select Character");
-        SelWeap = new JButton("Select Weapon");
+        SelChar = new JButton("Select Faction");
+        SelWeap = new JButton("Select Army");
         Ranking = new JButton("Ranking");
         StartB.setAlignmentX(Component.CENTER_ALIGNMENT);
         StartB.addActionListener(new ActionListener() {
@@ -97,11 +99,12 @@ public class Gui2 {
         Ranking.setMaximumSize(new Dimension(widthb, heightb));
         frame.setVisible(true);
     }
-
+    //shows the message you want in the console integrated to the gui
     private void showM(String message) {
         console.append(message + "\n");
     }
-	private void BattleStart() {
+	//starts the battle if the conditions are done
+private void BattleStart() {
 		if (J1.getChara().getId() == 0 && J1.getWeapon().getId() == 0) {
 			JOptionPane.showMessageDialog(null, "First select Your Character and Weapon", "Warning",
 					JOptionPane.WARNING_MESSAGE);
@@ -112,6 +115,7 @@ public class Gui2 {
 		} else if (J1.getName() != null) {
 	       	final int a = selfirst();
         	int s = 0;
+        	cpu();
         	setfight();
         	fight(a, s );
 		}else {
@@ -119,6 +123,7 @@ public class Gui2 {
 
 		}
 	}	
+	//selects the weapon of your character  
 	private void selectweapon(int i) {
 	    int a;
 	    a = i;
@@ -129,6 +134,7 @@ public class Gui2 {
 	    } else {
 	    panel.removeAll();
 	    JLabel tit = new JLabel("Choose your Army");
+	    tit.setAlignmentX(Component.CENTER_ALIGNMENT);
 	    panel.add(tit);
 	    JPanel buttonsPanel = new JPanel(new GridBagLayout());
 	    GridBagConstraints gbc = new GridBagConstraints();
@@ -151,8 +157,7 @@ public class Gui2 {
 	            }
 
 	            Weapon w = weaps.get(weapIndex);
-	            ImageIcon imageIcon = new ImageIcon(w.getUrl());
-	            JButton boto = new JButton(imageIcon);
+	            JButton boto = new JButton();
 	            ImageIcon imageIcon2 = new ImageIcon(w.getUrl());
 	            Image image = imageIcon2.getImage().getScaledInstance(frame.getWidth()/3, frame.getHeight(), Image.SCALE_SMOOTH);
 	            ImageIcon scaledImageIcon = new ImageIcon(image);
@@ -191,9 +196,11 @@ public class Gui2 {
 	    panel.repaint();
 	}
 	}
+	//selects your character
 	private void selectchara() {
 	    panel.removeAll();
-	    JLabel tit = new JLabel("Choose your Character");
+	    JLabel tit = new JLabel("Choose your Side");
+	    tit.setAlignmentX(Component.CENTER_ALIGNMENT);
 	    panel.add(tit);
 	    JPanel buttonsPanel = new JPanel(new GridBagLayout());
 	    GridBagConstraints gbc = new GridBagConstraints();
@@ -216,8 +223,7 @@ public class Gui2 {
 	            }
 
 	            Chara c = chars.get(charIndex);
-	            ImageIcon imageIcon = new ImageIcon(c.getUrl());
-	            JButton boto = new JButton(imageIcon);
+	            JButton boto = new JButton();
 	            Dimension buttonSize = new Dimension(frame.getWidth()/3, frame.getHeight());
 	            boto.setPreferredSize(buttonSize);
 	            boto.setMaximumSize(buttonSize);
@@ -237,6 +243,7 @@ public class Gui2 {
 	                    boolean compro = popuconfirm("Confirm Your Selection");
 	                    if (compro) {
 	                        J1.setChara(c);
+	                        J1.getWeapon().setId(0);;
 	                        volverinicio();
 	                    }
 	                }
@@ -257,6 +264,7 @@ public class Gui2 {
 	    panel.revalidate();
 	    panel.repaint();
 	}
+	//its a pop up with a message you want to confirm something
 	private boolean popuconfirm(String s) {
 		@SuppressWarnings("unused")
 		boolean confi;
@@ -267,7 +275,8 @@ public class Gui2 {
 		}else {
 			return confi = false;
 		}
-	}	
+	}
+	//returns to the mainmenu
 	private void volverinicio() {
 			panel.removeAll();
 			panel.add(Box.createVerticalGlue());
@@ -283,9 +292,11 @@ public class Gui2 {
 			frame.repaint();
 		
 	}
+	//creates the cpu character and weapon
 	private void cpu() {
 		Cpu = new Player(null, null, null);
 		Random random = new Random();
+		System.out.println(random);
 		boolean nes = false;
 		ArrayList<Integer> in = new ArrayList<Integer>();
 	    ArrayList<Chara> chars = ca.getCharas();
@@ -315,6 +326,7 @@ public class Gui2 {
 
 	    
 	}
+	//lets you put a name and doesnt let you have a white space
 	private void selname() {
 		cpu();
 		boolean conf = false;
@@ -340,6 +352,7 @@ public class Gui2 {
 
         }
 	}
+	//starts the fight between player and cpu
 	private void fight(int i, int io) {
 		if (J1.getChara().getHp() <= 0 || Cpu.getChara().getHp() <= 0 ) {
 			Winner();
@@ -353,7 +366,6 @@ public class Gui2 {
 						Cpu.getChara().resethp();
 						J1.getChara().resethp();
 						cpu();
-						J1.getChara().resethp();
 			        	turn(i,io);
 			        	int ios = io + 1 ;
 					    fight(i,ios);
@@ -388,7 +400,7 @@ public class Gui2 {
 				}else {
 					DbCon conn = new DbCon();
 			        String c1 = "INSERT INTO players (player_name) VALUES ('"+J1.getName()+"')";
-			        try {
+			        try {	
 			        	conn.insertData(c1);
 			        }finally {
 			            conn.closeConn();
@@ -413,8 +425,32 @@ public class Gui2 {
 			        JOptionPane.showMessageDialog(null, "You lost the previous battle, so you can choose again without entering your name", "Defeated", JOptionPane.INFORMATION_MESSAGE);
 			        volverinicio();
 				}
-			}else {
-					J1.setPoints(J1.getPoints() + (Cpu.getChara().getPoints() + Cpu.getWeapon().getPoints()));
+			}else{
+				J1.setPoints(J1.getPoints() + (Cpu.getChara().getPoints() + Cpu.getWeapon().getPoints()));
+					if (J1.getChara().getHp() <= 0) {
+					DbCon conn = new DbCon();
+			        String c1 = "INSERT INTO players (player_name) VALUES ('"+J1.getName()+"')";
+			        try {
+			        	conn.insertData(c1);
+			        }finally {
+			            conn.closeConn();
+			        }
+					DbCon conn2 = new DbCon();
+			        ResultSet rs = conn2.getQueryRS("SELECT player_id FROM players ORDER BY player_id DESC LIMIT 1");
+			        try {
+		            if (rs.next()) {
+		            	int lastId = rs.getInt("player_id");
+				        String c2 = "INSERT INTO battle_results (player_id ,char_id, char_race , char_weap_id , char_weap_army, rival_race , rival_weap_army , enemy_casualties , allied_casualties , battle_points) values ("+ lastId + "," + J1.getChara().getId() + ", '"  + J1.getChara().getRace() + "' ," + J1.getWeapon().getId() + ", '"+ J1.getWeapon().getName()+  "' , '" + Cpu.getChara().getRace() + "', '" + Cpu.getWeapon().getName() + "'," + Cpu.getChara().getHp() + "," + J1.getChara().getHp()+",0)";
+				        conn2.insertData(c2);
+		            }
+	
+		        }catch (SQLException e) {
+		            System.out.println("Error running ResultSet");
+		        }
+			        finally {
+			            conn.closeConn();
+		            System.exit(0);
+		        }}else {
 					DbCon conn = new DbCon();
 			        String c1 = "INSERT INTO players (player_name) VALUES ('"+J1.getName()+"')";
 			        try {
@@ -437,8 +473,10 @@ public class Gui2 {
 			        finally {
 			            conn.closeConn();
 		            System.exit(0);
-		        }}
+		        }
+		        }
 			}
+		}
 		else {
 			
         Timer timer = new Timer(1000, e -> {
@@ -451,6 +489,7 @@ public class Gui2 {
 
 		}
 	}
+	//paints the information of the players in the screen
 	private void setfight() {
     panel.removeAll();
     JLabel tit = new JLabel("Fight for the victory");
@@ -488,6 +527,26 @@ public class Gui2 {
             if (playIndex >= players.size()) {
                 break;
             }
+            Player p = players.get(playIndex);
+            JLabel ra;
+            JPanel charPanel = new JPanel();
+            charPanel.setLayout(new BoxLayout(charPanel, BoxLayout.Y_AXIS));
+            if(p.getChara().getId() == 1) {
+            	ra = new JLabel("The Imperium of man");
+            	ra.setAlignmentX(Component.CENTER_ALIGNMENT);
+            	charPanel.add(ra);
+
+            }else if(p.getChara().getId() == 2) {
+            	ra = new JLabel("The Aeldari Imperium");
+            	ra.setAlignmentX(Component.CENTER_ALIGNMENT);
+            	charPanel.add(ra);
+
+            }else if (p.getChara().getId() == 3) {
+            	ra = new JLabel("The Waaagh!");
+            	ra.setAlignmentX(Component.CENTER_ALIGNMENT);
+            	charPanel.add(ra);
+
+            }
             JButton boto = new JButton();
             JLabel name = new JLabel();
             JLabel hp = new JLabel();
@@ -495,9 +554,10 @@ public class Gui2 {
             JLabel spd = new JLabel();
             JLabel ag = new JLabel();
             JLabel def = new JLabel();
-            Player p = players.get(playIndex);
-            ImageIcon imageIcon = new ImageIcon(p.getWeapon().getUrl());
-            boto = new JButton(imageIcon);
+            ImageIcon imageIcon2 = new ImageIcon(p.getWeapon().getUrl());
+            Image image = imageIcon2.getImage().getScaledInstance(frame.getWidth()/3, frame.getHeight()/2, Image.SCALE_SMOOTH);
+            ImageIcon scaledImageIcon = new ImageIcon(image);
+            boto = new JButton(scaledImageIcon);
             name = new JLabel(p.getName());
             int at = p.getChara().getStr() + p.getWeapon().getStr();
             int spe = p.getChara().getSpd() + p.getWeapon().getSpd();
@@ -512,9 +572,8 @@ public class Gui2 {
 
             JProgressBar hpBar = new JProgressBar(0, p.getChara().getMaxhp());
             hpBar.setValue((int) (hpPercentage * 100));
-            JPanel charPanel = new JPanel();
 
-            Dimension buttonSize = new Dimension(frame.getWidth()/6, frame.getHeight()/3);
+            Dimension buttonSize = new Dimension(frame.getWidth()/3, frame.getHeight()/2);
             boto.setPreferredSize(buttonSize);
             boto.setMaximumSize(buttonSize);
             boto.setMinimumSize(buttonSize);
@@ -524,7 +583,7 @@ public class Gui2 {
             boto.setFocusPainted(false);
             boto.setOpaque(false);
             
-            charPanel.setLayout(new BoxLayout(charPanel, BoxLayout.Y_AXIS));
+
             charPanel.add(name);
             charPanel.add(hpBar);
             charPanel.add(hp);
@@ -552,6 +611,7 @@ public class Gui2 {
     panel.revalidate();
     panel.repaint();
 }
+	//selects who starts
 	private int selfirst() {
         Random random = new Random();
         int randomstart = random.nextInt(2) + 1;
@@ -570,7 +630,8 @@ public class Gui2 {
 	    }
 		return randomstart;
 		}	
-	private int turn(int i,int iv) {
+	//establish the turns
+private int turn(int i,int iv) {
 			int is = iv;
 			if (is == 0) {	
 				if (i % 2 == 0) {
@@ -605,7 +666,8 @@ public class Gui2 {
 						return i;
 					}
 				}
-	private void Winner() {
+	//prints who is the winner
+private void Winner() {
 		int Cpuhp = Cpu.getChara().getHp();
 		int J1hp = J1.getChara().getHp();
 		if (Cpuhp <= 0) {
@@ -617,6 +679,7 @@ public class Gui2 {
 
 		}
 	}
+	//the function of the attack of the player
 	private int P1Attack(int i) {
 		Random random = new Random();
 		showM(J1.getName() + "'s turn");
@@ -650,7 +713,8 @@ public class Gui2 {
     		return i + 1;
         }
 	}
-	private int CpuAt(int i) {
+	//the function of the attack of the cpu
+private int CpuAt(int i) {
 		Random random = new Random();
 		showM(Cpu.getName() + "'s turn");
         int ranum = random.nextInt(100) + 1;
@@ -682,8 +746,8 @@ public class Gui2 {
     		return i + 1;
         }
 	}
-	
-	  private void ranking() {
+	//shows the top10 players
+	private void ranking() {
 		    panel.removeAll();
 		    JLabel tit = new JLabel("Top 10 Players");
 		    panel.add(tit);

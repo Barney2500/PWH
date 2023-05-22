@@ -6,9 +6,9 @@ public class DbCon {
 
     private Connection conn;
     private Statement stmnt;
-
+    //stablish connection with the database
     public DbCon() {
-        String url = "jdbc:mysql://localhost/proyecto";
+        String url = "jdbc:mysql://localhost/proyecto2";
         String usr = "root";
         String pas = "1234";
 
@@ -18,7 +18,7 @@ public class DbCon {
             stmnt = conn.createStatement();
 
         } catch (ClassNotFoundException e) {
-            System.out.println("Driver not charged successfully");
+            System.out.println("Driver not charged");
         } catch (SQLException e) {
             System.out.println("Error in connection");
         }
@@ -31,7 +31,7 @@ public class DbCon {
         try {
             rs = stmnt.executeQuery(query);
         } catch (SQLException e) {
-            System.out.println("Error in query execution");
+            System.out.println("query error");
         }
 
         return rs;
@@ -41,7 +41,6 @@ public class DbCon {
 
         try {
             stmnt.executeUpdate(update);
-            System.out.println("Update has occurred");
         } catch (SQLException e) {
             System.out.println("Error in update");
         }

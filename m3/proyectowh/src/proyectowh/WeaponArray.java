@@ -7,7 +7,7 @@ import java.sql.*;
 public class WeaponArray {
 	private ArrayList<Weapon> weapons;
 	
-	
+	//gets the weapons from the db and inserts into an array
 	public WeaponArray(int i) {
 		weapons =  new ArrayList<Weapon>();
 		DbCon conn = new DbCon();

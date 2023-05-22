@@ -7,7 +7,7 @@ import java.util.ArrayList;
 public class Rankingshow {
 	private ArrayList<Ranking> ranks;
 	
-	
+	//gets the top 10 players in the database and inserts into an array
 	public Rankingshow() {
 		ranks =  new ArrayList<Ranking>();
 		DbCon conn = new DbCon();

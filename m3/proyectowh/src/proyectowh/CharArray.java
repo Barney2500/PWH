@@ -7,7 +7,7 @@ import java.sql.*;
 public class CharArray {
 	private ArrayList<Chara> chars;
 	
-	
+	//gets the characters from the db and inserts into an array
 	public CharArray() {
 		chars =  new ArrayList<Chara>();
 		DbCon conn = new DbCon();
