@@ -5,7 +5,7 @@
             <head>
                 <meta charset="UTF-8"/>
                 <meta name="viewport" content="initial-scale=1, maximum-scale=1" />
-                <title>Battle</title>
+                <title>The Final Showdown: Battle of the Last Ones</title>
                 <link rel="stylesheet" type="text/css" href="index.css"/> 
             </head>
             <body>
