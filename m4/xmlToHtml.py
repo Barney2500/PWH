@@ -31,15 +31,15 @@ mycursor.execute("select COLUMN_NAME from information_schema.columns where table
 myresult2 = mycursor.fetchall()
 
 xml=open("./xml/battle.xml", "w+")
-xml.write('<?xml version="1.0" encoding="UTF-8"?>\n<BATTLE>\n')
+xml.write('<?xml version="1.0" encoding="UTF-8"?>\n<battle>\n')
 
 for x in myresult:
-    xml.write(" <ROW>\n")
+    xml.write(" <row>\n")
     for j, k in zip(x, myresult2):
         k = str(k).replace("(", "").replace(")", "").replace("'", "").replace(",", "")
         xml.write(f"    <{k}>{j}</{k}>\n")
-    xml.write(" </ROW>\n")
-xml.write("</BATTLE>\n")
+    xml.write(" </row>\n")
+xml.write("</battle>\n")
 
 print(xml.read())
 xml.close()
